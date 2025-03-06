@@ -43,6 +43,9 @@ function fibnocci(n){
     return fibnocci(n-1) + fibnocci(n-2)
 }
 
+console.log(fibnocci(2));
+
+
 // for (let i = 0; i < 10; i++) {
 //     console.log(fibnocci(i));
 // }
