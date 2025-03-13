@@ -3,15 +3,15 @@
 const selectionSort = (arr) => {
   const n = arr.length;
   for (let i = 0; i < n; i++) {
-    let maxVal = i;
+    let minVal = i;
     for (let j = i + 1; j < n; j++) {
-      if (arr[j] > arr[maxVal]) {
-        maxVal = j;
+      if (arr[j] < arr[minVal]) {
+        minVal = j;
       }
     }
 
-    if (maxVal !== i) {
-      [arr[i], arr[maxVal]] = [arr[maxVal], arr[i]];
+    if (minVal !== i) {
+      [arr[i], arr[minVal]] = [arr[minVal], arr[i]];
     }
   }
 
