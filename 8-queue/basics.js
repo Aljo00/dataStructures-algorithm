@@ -30,13 +30,7 @@ class Queue {
   }
 
   printQueue() {
-    let queueStr = "";
-
-    for (let i = 0; i < this.size(); i++) {
-      queueStr += this.items[i] + " -> ";
-    }
-
-    console.log(queueStr + "NULL");
+    console.log(this.items);
   }
 
   isEmpty() {

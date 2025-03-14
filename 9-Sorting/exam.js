@@ -17,22 +17,20 @@ bubbleSort([29, 10, 14, 37, 14]);
 //Insertion Sort
 function insertionSort(arr) {
   let n = arr.length;
-  for (let i = 1; i < n; i++) {
+  for (i = 0; i < n; i++) {
     let key = arr[i];
     let j = i - 1;
-    while (j >= 0 && arr[j] < key) {
+    while (j <= 0 && arr[j] > key) {
       arr[j + 1] = arr[j];
       j--;
     }
     arr[j + 1] = key;
   }
-
   console.log(arr);
 }
 
 insertionSort([29, 10, 14, 37, 14]);
 
-//Selection Sort
 function selectionSort(arr) {
   let n = arr.length;
   for (let i = 0; i < n; i++) {
@@ -47,7 +45,6 @@ function selectionSort(arr) {
       [arr[i], arr[minVal]] = [arr[minVal], arr[i]];
     }
   }
-
   console.log(arr);
 }
 
@@ -57,11 +54,13 @@ selectionSort([29, 10, 14, 37, 14]);
 function quickSort(arr) {
   if (arr.length <= 1) return arr;
 
+  let n = arr.length;
+
   let pivot = arr[0];
   let left = [];
   let right = [];
 
-  for (let i = 1; i < arr.length; i++) {
+  for (let i = 1; i < n; i++) {
     if (arr[i] < pivot) {
       left.push(arr[i]);
     } else {
@@ -69,7 +68,7 @@ function quickSort(arr) {
     }
   }
 
-  return [...quickSort(right), pivot, ...quickSort(left)];
+  return [...quickSort(left), pivot, ...quickSort(right)];
 }
 
 console.log(quickSort([29, 10, 14, 37, 14]));
@@ -77,9 +76,9 @@ console.log(quickSort([29, 10, 14, 37, 14]));
 //Merge Sort
 function mergeSort(arr) {
   if (arr.length <= 1) return arr;
-  let n = arr.length;
 
-  let mid = Math.floor(n / 2);
+  let mid = Math.floor(arr.length / 2);
+
   let left = mergeSort(arr.slice(0, mid));
   let right = mergeSort(arr.slice(mid));
 
@@ -96,6 +95,7 @@ function merge(left, right) {
       sortedArr.push(right.shift());
     }
   }
+
   return [...sortedArr, ...left, ...right];
 }
 

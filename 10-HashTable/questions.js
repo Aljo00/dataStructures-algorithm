@@ -5,26 +5,26 @@
 // "listen" and "silent" → ✅ (Anagrams) -> return true
 // "hello" and "world" → ❌ (Not Anagrams) -> return false
 
-function validAnagram(str1, str2) {
-  // Step 1 = check that the length
+function isAnagram(str1, str2) {
   if (str1.length !== str2.length) return false;
 
-  // Storing the frequency of the str1;
-  let charCount = new Map();
+  let charCount = {};
 
   for (let char of str1) {
-    charCount.set(char, (charCount.get(char) || 0) + 1);
+    charCount[char] = (charCount[char] || 0) + 1;
   }
 
-  // Step 3: Decrease count for characters in str2
   for (let char of str2) {
-    if (!charCount.has(char) || charCount.get(char) === 0) return false;
+    if (!charCount[char]) return false;
 
-    charCount.set(char, charCount.get(char) - 1);
+    charCount[char]--;
   }
 
   return true;
 }
+
+console.log(isAnagram("listen", "silent")); // Output: true
+console.log(isAnagram("hello", "olleh")); // Output: false
 
 // console.log(validAnagram("listen", "sileet"));
 
@@ -59,7 +59,7 @@ function isValid(str) {
   return stack.length === 0;
 }
 
-console.log(isValid("(){}[]{"));
+// console.log(isValid("(){}[]{"));
 
 //Write a program to sort a string by using merge sort.
 
@@ -91,4 +91,21 @@ function merge(left, right) {
   return sortStr + left.slice(i) + right.slice(j);
 }
 
-console.log(mergeString("nmlkjihgfedcba"));
+// console.log(mergeString("nmlkjihgfedcba"));
+
+function nonRepeatingChars(str) {
+  let charCount = {};
+
+  for (let char of str) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+
+  let result = [];
+  for (let char in charCount) {
+    if (charCount[char] > 1) result.push(char);
+  }
+
+  console.log(result);
+}
+
+nonRepeatingChars("Aljo")

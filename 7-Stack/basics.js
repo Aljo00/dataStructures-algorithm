@@ -33,14 +33,26 @@ class Stack {
     return this.stack[this.size() - 1];
   }
 
+  deleteTarget(target) {
+    let tempStack = [];
+
+    while (!this.isEmpty()) {
+      let top = this.stack.pop();
+      if (top === target) break;
+      tempStack.push(top);
+    }
+
+    while (tempStack.length) {
+      this.push(tempStack.pop());
+    }
+  }
+
   printStack() {
     if (this.isEmpty()) {
       return "Stack is empty";
     }
 
-    for (let i = 0; i < this.size(); i++) {
-      console.log(this.stack[i]);
-    }
+    console.log(this.stack);
   }
 }
 
@@ -50,7 +62,5 @@ stack.push(20);
 stack.push(30);
 stack.push(40);
 console.log(stack.isEmpty());
+stack.deleteTarget(40);
 stack.printStack();
-
-const arr = [1, 2, 3, 45];
-console.log(arr.pop());
