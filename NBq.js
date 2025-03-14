@@ -1,4 +1,4 @@
-// Implement stack by using queue;
+// Implement stack by using two queue;
 
 class Stack {
   constructor() {
@@ -7,13 +7,15 @@ class Stack {
   }
 
   push(val) {
-    this.q2.push(val);
-
-    if (this.q1.length) {
+    while (this.q1.length !== 0) {
       this.q2.push(this.q1.shift());
     }
 
-    [this.q1, this.q2] = [this.q2, this.q1];
+    this.q1.push(val);
+
+    while (this.q2.length !== 0) {
+      this.q1.push(this.q2.shift());
+    }
   }
 
   pop() {
@@ -30,18 +32,20 @@ class Stack {
   isEmpty() {
     return this.q1.length === 0;
   }
+
+  printStack() {}
 }
 
 let stack = new Stack();
 
-// stack.push(30);
-// stack.push(40);
-// stack.pop();
-// stack.pop();
-// console.log(stack.isEmpty());
-// console.log(stack.peek());
+stack.push(30);
+stack.push(40);
+console.log(stack.pop());
+stack.pop();
+console.log(stack.isEmpty());
+console.log(stack.peek());
 
-//Implement the queue by using stack;
+//Implement the queue by using two stack;
 
 class Queue {
   constructor() {
@@ -106,20 +110,20 @@ function mergeSortArr(arr1, arr2) {
     }
   }
 
-  while( i < arr1.length){
+  while (i < arr1.length) {
     result.push(arr1[i]);
-    i++
+    i++;
   }
 
-  while(j < arr2.length){
+  while (j < arr2.length) {
     result.push(arr2[j]);
-    j++
+    j++;
   }
 
   return result;
 }
 
-let arr1 = [1,3,5,7,9,10,11];
-let arr2 = [1,2,4,6,8,25,1000];
+let arr1 = [1, 3, 5, 7, 9, 10, 11];
+let arr2 = [1, 2, 4, 6, 8, 25, 1000];
 
-console.log(mergeSortArr(arr1,arr2));
+// console.log(mergeSortArr(arr1, arr2));

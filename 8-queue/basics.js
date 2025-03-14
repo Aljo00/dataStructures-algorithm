@@ -1,23 +1,23 @@
 // basic implementation queue
 
 class Queue {
-  constructor(){
+  constructor() {
     this.items = [];
   }
 
-  enqueue(val){
+  enqueue(val) {
     this.items.push(val);
   }
 
-  dequeue(){
-    if(this.isEmpty()){
+  dequeue() {
+    if (this.isEmpty()) {
       return "Underflow, can't perform dequeue";
     }
 
     return this.items.shift();
   }
 
-  peek(){
+  peek() {
     if (this.isEmpty()) {
       return "Underflow, can't perform peek";
     }
@@ -25,22 +25,21 @@ class Queue {
     return this.items[0];
   }
 
-  size(){
+  size() {
     return this.items.length;
   }
 
-  printQueue(){
+  printQueue() {
     let queueStr = "";
 
-    for(let i = 0; i < this.size(); i++){
-      queueStr += this.items[i] + " -> "
+    for (let i = 0; i < this.size(); i++) {
+      queueStr += this.items[i] + " -> ";
     }
 
     console.log(queueStr + "NULL");
-    
   }
 
-  isEmpty(){
+  isEmpty() {
     return this.items.length === 0;
   }
 }
@@ -55,4 +54,4 @@ myQueue.enqueue(786);
 // console.log(myQueue.dequeue());
 // console.log(myQueue.peek());
 
-myQueue.printQueue()
+myQueue.printQueue();

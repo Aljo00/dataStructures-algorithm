@@ -1,44 +1,44 @@
 // basic stack implementation
 
 class Stack {
-  constructor(){
+  constructor() {
     this.stack = [];
   }
 
-  push(val){
+  push(val) {
     this.stack.push(val);
   }
 
-  size(){
+  size() {
     return this.stack.length;
   }
 
-  isEmpty(){
+  isEmpty() {
     return this.size() === 0;
   }
 
-  pop(){
-    if(this.isEmpty()){
+  pop() {
+    if (this.isEmpty()) {
       return "Stack is empty";
     }
 
     return this.stack.pop();
   }
 
-  peek(){
-    if(this.isEmpty()){
+  peek() {
+    if (this.isEmpty()) {
       return "Stack is empty";
     }
 
     return this.stack[this.size() - 1];
   }
 
-  printStack(){
+  printStack() {
     if (this.isEmpty()) {
       return "Stack is empty";
     }
 
-    for(let i = 0; i < this.size(); i++){
+    for (let i = 0; i < this.size(); i++) {
       console.log(this.stack[i]);
     }
   }
@@ -50,7 +50,7 @@ stack.push(20);
 stack.push(30);
 stack.push(40);
 console.log(stack.isEmpty());
-stack.printStack()
+stack.printStack();
 
-const arr = [1,2,3,45];
+const arr = [1, 2, 3, 45];
 console.log(arr.pop());
