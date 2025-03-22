@@ -52,11 +52,31 @@ class Trie {
     this.collectWords(node, prefix, result);
     return result;
   }
+
+  prefixSearch(prefix) {
+    let node = this.root;
+
+    for (let char of prefix) {
+      if (!node.children[char]){
+        console.log("False");
+        return;
+      }
+
+      node = node.children[char];
+    }
+
+    console.log("True");
+    return;
+  }
 }
 
 const trie = new Trie();
 trie.insert("apple");
-trie.insert("appy")
+trie.insert("appy");
 trie.insert("banana");
+
+trie.prefixSearch("ap");
+trie.prefixSearch("ba");
+trie.prefixSearch("f")
 
 console.log(trie.autoComplete("b"));
