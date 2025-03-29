@@ -254,6 +254,22 @@ class BST {
     if (node.left) this.printLeafNodes(node.left);
     if (node.right) this.printLeafNodes(node.right);
   }
+
+  sameTree(root1, root2){
+    if(!root1 && !root2){
+      return true;
+    }
+
+    if(!root1 || !root2){
+      return false;
+    }
+
+    return(
+      root1.value === root2.value &&
+      this.sameTree(root1.left, root2.left) &&
+      this.sameTree(root1.right, root2.right)
+    )
+  }
 }
 
 const bst = new BST();
@@ -273,37 +289,39 @@ bst2.insertNode(40);
 bst2.insertNode(20);
 bst2.insertNode(70);
 bst2.insertNode(60);
-bst2.insertNode(80);
+// bst2.insertNode(80);
 
-console.log(bst.findThirdLargest());
+console.log(bst.sameTree(bst.root, bst2.root))
 
-console.log(bst.isBalanced());
+// console.log(bst.findThirdLargest());
 
-bst.printLeafNodes()
+// console.log(bst.isBalanced());
 
-console.log(bst.getHeight(bst.root));
+// bst.printLeafNodes()
 
-console.log(bst.getDepth(bst.root, 50))
+// console.log(bst.getHeight(bst.root));
 
-console.log("This is inOrder traversal");
-bst.inOrder(bst.root);
+// console.log(bst.getDepth(bst.root, 50))
 
-console.log("\nThe close value of 20 is ", bst.findTheClosest(60));
+// console.log("This is inOrder traversal");
+// bst.inOrder(bst.root);
 
-console.log("This is preOrder traversal");
-bst.preOrder(bst.root);
+// console.log("\nThe close value of 20 is ", bst.findTheClosest(60));
 
-console.log(" \nThis is postOrder traversal");
-bst.postOrder(bst.root);
+// console.log("This is preOrder traversal");
+// bst.preOrder(bst.root);
 
-console.log(
-  "\nThe Second largest value of this tree is " + bst.findSecondLargest()
-);
+// console.log(" \nThis is postOrder traversal");
+// bst.postOrder(bst.root);
 
-console.log("The Minimum value of this node is " + bst.findMin());
+// console.log(
+//   "\nThe Second largest value of this tree is " + bst.findSecondLargest()
+// );
 
-console.log("The 5th smallest number is " + bst.findKthMin(1));
+// console.log("The Minimum value of this node is " + bst.findMin());
 
-console.log(
-  "The two trees are identical " + bst.areIdentical(bst.root, bst2.root)
-);
+// console.log("The 5th smallest number is " + bst.findKthMin(1));
+
+// console.log(
+//   "The two trees are identical " + bst.areIdentical(bst.root, bst2.root)
+

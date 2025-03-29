@@ -15,7 +15,7 @@ class Graph {
       this.adjList.get(v2).push(v1);
     }
   }
-  
+
   dfs(start, visited = new Set()) {
     if (!this.adjList.has(start)) return;
 
@@ -29,26 +29,6 @@ class Graph {
     }
   }
 
-  bfs(start) {
-    if (!this.adjList.has(start)) return;
-
-    let queue = [start];
-    let visited = new Set();
-    visited.add(start);
-
-    while (queue.length > 0) {
-      let vertex = queue.shift();
-      console.log(vertex);
-
-      for (let neighbour of this.adjList.get(vertex)) {
-        if (!visited.has(neighbour)) {
-          visited.add(neighbour);
-          queue.push(neighbour);
-        }
-      }
-    }
-  }
-
   cloneGraph() {
     let clone = new Graph();
 
@@ -56,22 +36,22 @@ class Graph {
     let queue = [];
 
     let start = this.adjList.keys().next().value;
-    if(start === "undefined") return false;
+    if (start === "undefined") return false;
 
     queue.push(start);
-    visited.set(start,start);
+    visited.set(start, start);
 
-    while(queue.length > 0){
+    while (queue.length > 0) {
       let node = queue.shift();
       clone.addVertex(node);
 
-      for(let neighbour of this.adjList.get(node)){
-        if(!visited.has(neighbour)){
+      for (let neighbour of this.adjList.get(node)) {
+        if (!visited.has(neighbour)) {
           visited.set(neighbour, neighbour);
           queue.push(neighbour);
         }
 
-        clone.addEdge(node,neighbour)
+        clone.addEdge(node, neighbour);
       }
     }
     return clone;
@@ -91,8 +71,9 @@ graph.addEdge(2, 3);
 graph.addEdge(2, 10);
 
 // graph.dfs(1);
+graph.dfs(1);
 
-graph.bfs(1);
 
-let cloneGraph = graph.cloneGraph();
-cloneGraph.bfs(1)
+
+// let cloneGraph = graph.cloneGraph();
+// cloneGraph.bfs(1);
