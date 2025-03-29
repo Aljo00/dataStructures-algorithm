@@ -40,6 +40,16 @@ class BinaryTree {
     }
   }
 
+  // DFS Approach: Recursive Height Calculation
+  getHeightDFS(node = this.root) {
+    if (!node) return 0; // Base case: Empty tree or leaf node
+
+    let leftHeight = this.getHeightDFS(node.left);
+    let rightHeight = this.getHeightDFS(node.right);
+
+    return 1 + Math.max(leftHeight, rightHeight);
+  }
+
   printTree() {
     if (!this.root) return "Tree is Empty";
 
@@ -54,6 +64,17 @@ class BinaryTree {
     }
     console.log();
   }
+
+  getDepth(node, value, depth = 0) {
+    if (!node) return -1; // Node not found
+
+    if (node.value === value) return depth;
+
+    let leftDepth = this.getDepth(node.left, value, depth + 1);
+    if (leftDepth !== -1) return leftDepth; // If found in left subtree
+
+    return this.getDepth(node.right, value, depth + 1);
+  }
 }
 
 const Tree = new BinaryTree();
@@ -65,4 +86,7 @@ Tree.insertNode(10);
 Tree.insertNode(33);
 Tree.insertNode(50);
 Tree.insertNode(60);
+
+console.log(Tree.getHeightDFS())
+console.log(Tree.getDepth(Tree.root, 60))
 Tree.printTree();
