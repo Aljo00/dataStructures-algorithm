@@ -281,29 +281,29 @@ console.log(bst.isBalanced());
 
 bst.printLeafNodes()
 
-// console.log(bst.getHeight(bst.root));
+console.log(bst.getHeight(bst.root));
 
-// console.log(bst.getDepth(bst.root, 50))
+console.log(bst.getDepth(bst.root, 50))
 
-// console.log("This is inOrder traversal");
-// bst.inOrder(bst.root);
+console.log("This is inOrder traversal");
+bst.inOrder(bst.root);
 
-// console.log("\nThe close value of 20 is ", bst.findTheClosest(60));
+console.log("\nThe close value of 20 is ", bst.findTheClosest(60));
 
-// console.log("This is preOrder traversal");
-// bst.preOrder(bst.root);
+console.log("This is preOrder traversal");
+bst.preOrder(bst.root);
 
-// console.log(" \nThis is postOrder traversal");
-// bst.postOrder(bst.root);
+console.log(" \nThis is postOrder traversal");
+bst.postOrder(bst.root);
 
-// console.log(
-//   "\nThe Second largest value of this tree is " + bst.findSecondLargest()
-// );
+console.log(
+  "\nThe Second largest value of this tree is " + bst.findSecondLargest()
+);
 
-// console.log("The Minimum value of this node is " + bst.findMin());
+console.log("The Minimum value of this node is " + bst.findMin());
 
-// console.log("The 5th smallest number is " + bst.findKthMin(1));
+console.log("The 5th smallest number is " + bst.findKthMin(1));
 
-// console.log(
-//   "The two trees are identical " + bst.areIdentical(bst.root, bst2.root)
-// );
+console.log(
+  "The two trees are identical " + bst.areIdentical(bst.root, bst2.root)
+);
