@@ -198,6 +198,48 @@ class BST {
 
     return this.getDepth(node.right, value, depth + 1); // Check right subtree
   }
+
+  findThirdLargest() {
+    let count = 0;
+    let result = null;
+
+    function reverseInOrder(node) {
+      if (!node || count >= 3) return;
+
+      // Traverse right first (higher values)
+      reverseInOrder(node.left);
+
+      count++;
+      if (count === 3) {
+        result = node.value;
+        return;
+      }
+
+      // Traverse left
+      reverseInOrder(node.right);
+    }
+
+    reverseInOrder(this.root);
+    return result !== null ? result : "Tree has less than 3 nodes";
+  }
+
+  isBalanced() {
+    function checkHeight(node) {
+      if (!node) return 0; // Base case: height of null node is 0
+
+      let leftHeight = checkHeight(node.left);
+      if (leftHeight === -1) return -1; // If left subtree is unbalanced, return -1
+
+      let rightHeight = checkHeight(node.right);
+      if (rightHeight === -1) return -1; // If right subtree is unbalanced, return -1
+
+      if (Math.abs(leftHeight - rightHeight) > 1) return -1; // If imbalance found
+
+      return Math.max(leftHeight, rightHeight) + 1; // Return height of current node
+    }
+
+    return checkHeight(this.root) !== -1;
+  }
 }
 
 const bst = new BST();
@@ -219,9 +261,13 @@ bst2.insertNode(70);
 bst2.insertNode(60);
 bst2.insertNode(80);
 
-console.log(bst.getHeight(bst.root));
+console.log(bst.findThirdLargest());
 
-console.log(bst.getDepth(bst.root, 50))
+console.log(bst.isBalanced())
+
+// console.log(bst.getHeight(bst.root));
+
+// console.log(bst.getDepth(bst.root, 50))
 
 // console.log("This is inOrder traversal");
 // bst.inOrder(bst.root);
