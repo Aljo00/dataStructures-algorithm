@@ -240,6 +240,20 @@ class BST {
 
     return checkHeight(this.root) !== -1;
   }
+
+  printLeafNodes(node = this.root) {
+    if (!node) return; // Base case: If node is null, return
+
+    // If the node has no children, it is a leaf node
+    if (!node.left && !node.right) {
+      console.log(node.value);
+      return;
+    }
+
+    // Recursively call for left and right subtree
+    if (node.left) this.printLeafNodes(node.left);
+    if (node.right) this.printLeafNodes(node.right);
+  }
 }
 
 const bst = new BST();
@@ -263,7 +277,9 @@ bst2.insertNode(80);
 
 console.log(bst.findThirdLargest());
 
-console.log(bst.isBalanced())
+console.log(bst.isBalanced());
+
+bst.printLeafNodes()
 
 // console.log(bst.getHeight(bst.root));
 
